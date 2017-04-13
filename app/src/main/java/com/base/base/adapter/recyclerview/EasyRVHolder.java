@@ -1,12 +1,12 @@
 package com.base.base.adapter.recyclerview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Paint;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.SparseArray;
 import android.view.View;
@@ -61,6 +61,11 @@ public class EasyRVHolder extends RecyclerView.ViewHolder implements ViewHelper.
         return this;
     }
 
+    public EasyRVHolder setOnItemViewLongClickListener(View.OnLongClickListener listener) {
+        mConvertView.setOnLongClickListener(listener);
+        return this;
+    }
+
     @Override
     public EasyRVHolder setText(int viewId, String value) {
         TextView view = getView(viewId);
@@ -75,11 +80,10 @@ public class EasyRVHolder extends RecyclerView.ViewHolder implements ViewHelper.
         return this;
     }
 
-    @TargetApi(Build.VERSION_CODES.M)
     @Override
     public EasyRVHolder setTextColorRes(int viewId, int colorRes) {
         TextView view = getView(viewId);
-        view.setTextColor(mContext.getResources().getColor(colorRes, null));
+        view.setTextColor(ContextCompat.getColor(mContext, colorRes));
         return this;
     }
 
@@ -111,15 +115,15 @@ public class EasyRVHolder extends RecyclerView.ViewHolder implements ViewHelper.
         return this;
     }
 
-    @TargetApi(Build.VERSION_CODES.LOLLIPOP)
     @Override
     public EasyRVHolder setImageDrawableRes(int viewId, int drawableRes) {
-        Drawable drawable = mContext.getResources().getDrawable(drawableRes, null);
+        Drawable drawable = ContextCompat.getDrawable(mContext, drawableRes);
         return setImageDrawable(viewId, drawable);
     }
 
     @Override
     public EasyRVHolder setImageUrl(int viewId, String imgUrl) {
+        // TODO: Use Glide/Picasso/ImageLoader/Fresco
         return this;
     }
 

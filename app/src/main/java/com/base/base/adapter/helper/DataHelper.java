@@ -8,8 +8,6 @@ import java.util.List;
  */
 public interface DataHelper<T> {
 
-    boolean setData(List<T> list);
-
     boolean addAll(List<T> list);
 
     boolean addAll(int position, List<T> list);

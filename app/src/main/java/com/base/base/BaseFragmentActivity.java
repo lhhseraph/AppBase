@@ -177,13 +177,6 @@ public class BaseFragmentActivity extends SupportActivity {
         super.startWithPop(toFragment);
     }
 
-    public void start(final SupportFragment toFragment, @SupportFragment.LaunchMode final int launchMode) {
-        if (isStoped()) {
-            return;
-        }
-        super.start(toFragment, launchMode);
-    }
-
     public void popTo(Class<?> fragmentClass, boolean includeSelf) {
         if (isStoped()) {
             return;

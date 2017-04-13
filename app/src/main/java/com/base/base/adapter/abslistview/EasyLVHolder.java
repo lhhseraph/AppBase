@@ -1,4 +1,4 @@
-package com.base.base.adapter.listview;
+package com.base.base.adapter.abslistview;
 
 import android.content.Context;
 import android.graphics.Bitmap;

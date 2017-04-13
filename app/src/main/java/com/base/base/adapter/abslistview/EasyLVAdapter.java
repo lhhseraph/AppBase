@@ -1,4 +1,4 @@
-package com.base.base.adapter.listview;
+package com.base.base.adapter.abslistview;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,7 +9,6 @@ import android.widget.BaseAdapter;
 import com.base.base.adapter.helper.DataHelper;
 
 import java.util.List;
-
 
 /**
  * @author yuyh.
@@ -94,15 +93,6 @@ public abstract class EasyLVAdapter<T> extends BaseAdapter implements DataHelper
     }
 
     public abstract void convert(EasyLVHolder holder, int position, T t);
-
-
-    @Override
-    public boolean setData(List<T> list) {
-        mList.clear();
-        boolean result = mList.addAll(list);
-        notifyDataSetChanged();
-        return result;
-    }
 
     @Override
     public boolean addAll(List<T> list) {

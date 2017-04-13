@@ -5,7 +5,7 @@ import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.view.View;
 
-import com.base.base.adapter.listview.EasyLVHolder;
+import com.base.base.adapter.abslistview.EasyLVHolder;
 import com.base.base.adapter.recyclerview.EasyRVHolder;
 
 
