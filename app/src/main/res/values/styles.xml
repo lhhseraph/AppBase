@@ -1,0 +1,137 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <!--
+        1、android:colorControlActivated：表示CheckBox、EditText、Switch、Spinner、RadioButton等控件激活时候的色调，与之相同作用的一个属性：android:colorAccent。作用也是一样的。
+        2、android:colorControlNormal：表示CheckBox、EditText、Switch、Spinner、RadioButton等控件默认时的色调
+        3、android:colorPrimary：设置appBar的背景色
+        4、android:colorPrimaryDark：设置状态栏的颜色
+        5、android:textColorPrimary：设置appBar上字体的颜色
+        -->
+        <!--<item name="colorPrimary">@color/colorPrimary</item>-->
+        <!--<item name="colorPrimaryDark">@android:color/transparent</item>-->
+        <!--窗口的背景颜色 -->
+        <!--<item name="android:windowBackground">@android:color/transparent</item>-->
+    </style>
+
+    <style name="FullscreenTheme" parent="AppTheme">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <style name="StartTheme" parent="FullscreenTheme">
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <item name="android:windowAnimationStyle">@style/StartAnimationActivity</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- float_box为我们定义的窗口背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+
+    <style name="MainTheme" parent="FullscreenTheme">
+        <item name="android:windowAnimationStyle">@style/MainAnimationActivity</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFrame">@null</item>
+        <!-- float_box为我们定义的窗口背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+    </style>
+
+    <style name="AppBarTheme" parent="FullscreenTheme">
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <!--<item name="android:windowAnimationStyle">@style/Animation.Activity.Translucent.Style</item>-->
+        <!--<item name="android:windowIsTranslucent">true</item>-->
+        <!-- 定义的窗口背景 -->
+        <item name="android:windowContentOverlay">@null</item>
+        <!-- 隐藏状态栏 -->
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowFrame">@null</item>
+        <!--<item name="actionDropDownStyle">@style/AppBaseToolBarMenuDropDownStyle</item>-->
+        <item name="actionOverflowMenuStyle">@style/AppBaseToolbarOverflowMenuStyle</item>
+        <!-- float_box为我们定义的窗口背景 -->
+        <item name="android:windowBackground">@android:color/transparent</item>
+
+        <!--<item name="android:textColor">@android:color/black</item>-->
+    </style>
+
+    <style name="BarcodeTheme" parent="FullscreenTheme">
+        <item name="android:windowAnimationStyle">@style/AnimationActivity</item>
+        <item name="actionOverflowMenuStyle">@style/AppBaseToolbarOverflowMenuStyle</item>
+    </style>
+
+
+    <!-- StartAnimationActivity, MainAnimationActivity 启动APK从startActivity第一进入MainActivity fade效果，
+    Main里打开其他Activity和返回main使用slide_right效果 -->
+    <style name="MainAnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <!-- 跳回一个Activity也包括两部分，当前Activity摧毁动画，上个Actiivty进入动画 -->
+        <!-- 上个Activity进入动画 -->
+        <item name="android:activityCloseEnterAnimation">@anim/slide_right_in</item>
+        <!-- 当前Activity退出动画 -->
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+    <style name="StartAnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+        <!-- 进入Acitvity包括两部分，当前Activity退出动画，下个Activity进入动画 -->
+        <!--&lt;!&ndash; 下个Activty进入动画 &ndash;&gt;-->
+        <item name="android:activityOpenEnterAnimation">@anim/fade_in</item>
+        <!-- 当前Activity退出的动画 -->
+        <item name="android:activityOpenExitAnimation">@anim/fade_out</item>
+    </style>
+
+    <style name="AnimationActivity" mce_bogus="1" parent="@android:style/Animation.Activity">
+
+        <!-- 进入Acitvity包括两部分，当前Activity退出动画，下个Activity进入动画 -->
+        <!-- 下个Activty进入动画 -->
+        <item name="android:activityOpenEnterAnimation">@anim/slide_left_in</item>
+        <!-- 当前Activity退出的动画 -->
+        <item name="android:activityOpenExitAnimation">@anim/slide_left_out</item>
+
+        <!-- 跳回一个Activity也包括两部分，当前Activity摧毁动画，上个Actiivty进入动画 -->
+        <!-- 上个Activity进入动画 -->
+        <item name="android:activityCloseEnterAnimation">@anim/slide_right_in</item>
+        <!-- 当前Activity退出动画 -->
+        <item name="android:activityCloseExitAnimation">@anim/slide_right_out</item>
+    </style>
+
+
+    <style name="Animation.Activity.Style" parent="@android:style/Animation.Activity">
+        <item name="android:activityOpenEnterAnimation">@anim/zoom_enter</item>
+        <item name="android:activityOpenExitAnimation">@anim/zoom_exit</item>
+        <item name="android:activityCloseEnterAnimation">@anim/zoom_exit</item>
+        <item name="android:activityCloseExitAnimation">@anim/zoom_exit</item>
+        <item name="android:taskOpenEnterAnimation">@anim/zoom_enter</item>
+        <item name="android:taskOpenExitAnimation">@anim/zoom_exit</item>
+        <item name="android:taskCloseEnterAnimation">@anim/zoom_exit</item>
+        <item name="android:taskCloseExitAnimation">@anim/zoom_exit</item>
+        <item name="android:taskToFrontEnterAnimation">@anim/zoom_enter</item>
+        <item name="android:taskToFrontExitAnimation">@anim/zoom_exit</item>
+        <item name="android:taskToBackEnterAnimation">@anim/zoom_exit</item>
+        <item name="android:taskToBackExitAnimation">@anim/zoom_exit</item>
+    </style>
+
+    <style name="Animation.Activity.Translucent.Style" parent="@android:style/Animation.Translucent">
+        <item name="android:windowEnterAnimation">@anim/zoom_enter</item>
+        <item name="android:windowExitAnimation">@anim/zoom_exit</item>
+    </style>
+
+    <!--3个点 溢出菜单样式 -->
+    <style name="AppBaseToolbarOverflowMenuStyle" parent="@style/Widget.AppCompat.Light.PopupMenu.Overflow">
+        <item name="overlapAnchor">false</item>
+        <item name="android:textColor">@android:color/white</item>
+        <!--弹出菜单背景色为标题栏的背景色-->
+        <item name="android:popupBackground">@color/colorPrimary</item>
+        <!--       弹出菜单与标题栏的垂直间距-->
+        <item name="android:dropDownVerticalOffset">1dip</item>
+
+    </style>
+
+</resources>
