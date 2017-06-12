@@ -134,7 +134,7 @@ public abstract class EasyRVAdapter<T> extends RecyclerView.Adapter<EasyRVHolder
     }
 
     private int getPosition(int position) {
-        if (mHeaderView != null || mFooterView != null) {
+        if (mHeaderView != null) {
             position = position - 1;
         }
         return position;
@@ -156,17 +156,41 @@ public abstract class EasyRVAdapter<T> extends RecyclerView.Adapter<EasyRVHolder
      * @param headerViewId
      */
     public View setHeaderView(int headerViewId) {
-        mHeaderView = mLInflater.inflate(headerViewId, null);
+        return setHeaderView(headerViewId, null);
+    }
+
+    public View setHeaderView(int headerViewId, ViewGroup parent) {
+        mHeaderView = mLInflater.inflate(headerViewId, parent, false);
         this.headerViewId = headerViewId;
         notifyItemInserted(0);
         return mHeaderView;
     }
 
+    public void removeHeaderView() {
+        if (mHeaderView != null) {
+            mHeaderView = null;
+            this.headerViewId = -1;
+            notifyItemRemoved(0);
+        }
+    }
+
     public View setFooterView(int footerViewId) {
-        mFooterView = mLInflater.inflate(footerViewId, null);
+        return setFooterView(footerViewId, null);
+    }
+
+    public View setFooterView(int footerViewId, ViewGroup parent) {
+        mFooterView = mLInflater.inflate(footerViewId, parent, false);
         this.footerViewId = footerViewId;
         notifyItemInserted(mList.size());
         return mFooterView;
+    }
+
+    public void removeFooterView() {
+        if (mFooterView != null) {
+            mFooterView = null;
+            this.footerViewId = -2;
+            notifyItemRemoved(mList.size() - 1);
+        }
     }
 
     /****
